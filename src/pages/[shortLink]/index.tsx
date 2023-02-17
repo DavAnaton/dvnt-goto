@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import { Link } from "@/models/link";
 import { NextApiRequest } from "next";
- 
+
 export async function getServerSideProps(request: NextApiRequest) {
   const { shortLink } = request.query;
 
@@ -17,7 +17,7 @@ export async function getServerSideProps(request: NextApiRequest) {
   } else {
     return {
       redirect: {
-        destination: '/create/'+shortLink,
+        destination: `/${shortLink}/create`,
         permanent: false,
       }
     }

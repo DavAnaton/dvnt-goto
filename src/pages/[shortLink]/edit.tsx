@@ -30,8 +30,22 @@ export default function EditLink({ link }: { link: LinkDoc }) {
         <title>go/{link.shortLink}</title>
       </Head>
       <main>
-        {link.shortLink}
-        {link.fullLink}
+        <h2>go/{link.shortLink}</h2>
+        <h3>URL</h3>
+        Current Value: {link.fullLink.slice(0,100)}...
+        <input value={link.fullLink}/>
+        <h3>Owners</h3>
+        Current Value: Me
+        <input value="Me"/>
+        <button>Save</button>
+        <button>Cancel</button>
+        <button>Delete</button>
+        <hr/>
+        <h3>Change history</h3>
+        Who did what | When | Description(value)
+        <hr/>
+        <h3>Metrics</h3>
+        Access by time, users, ...
       </main>
     </>
   )

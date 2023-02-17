@@ -1,0 +1,15 @@
+.layoutContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidePanel {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+}
