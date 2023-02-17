@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        {data?.data?.map((link: LinkDoc) => <div>
+        {data?.data?.map((link: LinkDoc) => <div key={link._id}>
           <Link href={`/${link.shortLink}/edit`}>
             go/{link.shortLink}
           </Link>
