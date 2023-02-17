@@ -5,7 +5,7 @@ import { SWRConfig } from 'swr'
 
 export default function App({ Component, pageProps }: AppProps) {
   return <SWRConfig value={{
-    fetcher: (...args) => fetch(...args).then(res => res.json()),
+    fetcher: (url, params) => fetch(url, params).then(res => res.json()),
 
   }}>
     <Component {...pageProps} />
