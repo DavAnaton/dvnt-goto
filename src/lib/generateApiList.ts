@@ -14,7 +14,7 @@ export default function generateList<Data, Model extends mongoose.Model<Data, an
   return async (req: NextApiRequest, res: NextApiResponse<ListReponse<Data>>) => {
     const session = await getServerSession(req, res, authOptions)
     if(!session){
-      return res.status(403).json({
+      return res.status(401).json({
         success: false,
         error: "You are not authenticated.",
       })
