@@ -27,16 +27,16 @@ export default function EditLink({ link }: { link: LinkDoc }) {
   return (
     <>
       <Head>
-        <title>go/{link.shortLink}</title>
+        <title>Edit link</title>
       </Head>
       <main>
         <h2>go/{link.shortLink}</h2>
         <h3>URL</h3>
         Current Value: {link.fullLink.slice(0,100)}...
-        <input value={link.fullLink}/>
+        <input defaultValue={link.fullLink}/>
         <h3>Owners</h3>
         Current Value: Me
-        <input value="Me"/>
+        <input defaultValue="Me"/>
         <button>Save</button>
         <button>Cancel</button>
         <button>Delete</button>
