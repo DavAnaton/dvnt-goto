@@ -1,12 +1,13 @@
 import dbConnect from "@/lib/dbConnect";
-import { Link } from "@/models/link";
+import { LinkDb  } from "@/models/link";
 import { NextApiRequest } from "next";
+import Link from "next/link";
 
 export async function getServerSideProps(request: NextApiRequest) {
   const { shortLink } = request.query;
 
   await dbConnect();
-  const link = await Link.findOne({ shortLink });
+  const link = await LinkDb.findOne({ shortLink });
   if (link) {
     return {
       redirect: {
@@ -14,14 +15,20 @@ export async function getServerSideProps(request: NextApiRequest) {
         permanent: false,
       },
     };
-  } else {
-    return {
-      redirect: {
-        destination: `/${shortLink}/create`,
-        permanent: false,
-      }
-    }
   }
+  return {
+    props: {
+      shortLink,
+    },
+  };
 }
 
-export default function GoToPage() {}
+export default function NonExistingLink({ shortLink }: { shortLink: string }) {
+  return <>
+    This link doesn't exist.
+    <Link href={`/${shortLink}/create`}>
+      <button>Create it</button>
+    </Link>
+  </>;
+
+}

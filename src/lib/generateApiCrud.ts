@@ -7,7 +7,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 interface CrudReponse<Data>{
 	success: boolean;
 	data?: Data;
-  error?: string;
+  error?: any;
 }
 
 export default function generateCrud<Data, Model extends mongoose.Model<Data, any>>(model: Model) {
@@ -21,31 +21,31 @@ export default function generateCrud<Data, Model extends mongoose.Model<Data, an
     }
 
     const { method } = req;
-    const { id } = req.query;
+    const { shortLink } = req.query;
 
     await dbConnect();
     try{
       switch (method) {
         case 'GET':
-          return res.status(200).json({ success: true, data: await model.findOne({_id: id}) });
+          return res.status(200).json({ success: true, data: await model.findOne({shortLink}) });
           break;
         case 'POST':
-          return res.status(201).json({ success: true, data: await model.create(req.body) });
+          return res.status(201).json({ success: true, data: await model.create({shortLink, ...req.body}) });
           break;
         case 'DELETE':
-          await model.deleteOne({_id: id});
+          await model.deleteOne({shortLink});
           return res.status(200).json({ success: true });
           break;
         case 'PUT':
-          return res.status(200).json({ success: true, data: await model.updateOne({_id: id}, req.body) });
+          return res.status(200).json({ success: true, data: await model.updateOne({shortLink}, req.body) });
           break;
         default:
           res.setHeader('Allow', ['GET', 'PUT', 'POST', 'DELETE']);
           res.status(405).end(`Method ${method} Not Allowed`);
           break;
       }
-    }catch{
-      return res.status(400).json({ success: false });
+    }catch (error){
+      return res.status(400).json({ success: false, error});
     }
   }
 }

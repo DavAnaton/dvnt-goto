@@ -26,11 +26,11 @@ const linkSchema = new mongoose.Schema({
 });
 
 linkSchema.statics.build = (attr: ILink) => {
-	return new Link(attr);
+	return new LinkDb(attr);
 };
 
-const Link = mongoose.models.Link || mongoose.model<LinkDoc, LinkModelInterface>('Link', linkSchema);
+const LinkDb = mongoose.models.Link || mongoose.model<LinkDoc, LinkModelInterface>('Link', linkSchema);
 
 export {
-	Link,
+	LinkDb,
 };
