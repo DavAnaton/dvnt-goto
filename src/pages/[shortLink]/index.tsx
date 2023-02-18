@@ -25,7 +25,7 @@ export async function getServerSideProps(request: NextApiRequest) {
 
 export default function NonExistingLink({ shortLink }: { shortLink: string }) {
   return <>
-    This link doesn't exist.
+    This link does not exist.
     <Link href={`/${shortLink}/create`}>
       <button>Create it</button>
     </Link>
