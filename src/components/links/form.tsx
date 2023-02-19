@@ -1,21 +1,21 @@
-import { LinkDoc } from "@/models/link";
+import { ILink } from "@/models/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 
 interface LinkFormInterface{
-	existingLink?: LinkDoc;
+	existingLink?: ILink;
 	shortLink?: string;
 }
 
 export default function LinkForm({existingLink, shortLink}: LinkFormInterface) {
 	const router = useRouter();
-	const {register, handleSubmit, watch} = useForm<LinkDoc>();
+	const {register, handleSubmit, watch} = useForm<ILink>();
 	const endpoint = `/api/links/${existingLink?.shortLink ?? shortLink}`;
 	const method = existingLink ? 'PUT' : 'POST';
 
-	const onSubmit =  async (form: LinkDoc) => {
+	const onSubmit =  async (form: ILink) => {
 	    const body = JSON.stringify(form);
 	    const options = {
 	      method,

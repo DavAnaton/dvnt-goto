@@ -1,14 +1,11 @@
 import mongoose from 'mongoose';
 
-interface ILink {
+export interface ILink {
 	shortLink: string;
 	fullLink: string;
 };
 
-export interface LinkDoc extends mongoose.Document {
-	shortLink: string;
-	fullLink: string;
-};
+export type LinkDoc = mongoose.Document&ILink;
 
 interface LinkModelInterface extends mongoose.Model<LinkDoc>{
 	build(attr: ILink): LinkDoc;
