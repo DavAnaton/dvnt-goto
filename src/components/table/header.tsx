@@ -1,9 +1,8 @@
 import { TableHeaderProps } from "./types";
 
-const TableHeader = <T, K extends keyof T>({ columns }: TableHeaderProps<T, K>): JSX.Element => {
+export default function TableHeader<T>({ columns }: TableHeaderProps<T>){
   const headers = columns.map((column, index) => {
     const style = {
-      width: column.width ?? 100, // 100 is our default value if width is not defined
       borderBottom: '2px solid black'
     };
 
@@ -23,5 +22,3 @@ const TableHeader = <T, K extends keyof T>({ columns }: TableHeaderProps<T, K>):
     </thead>
   );
 };
-
-export default TableHeader;

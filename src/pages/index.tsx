@@ -21,8 +21,14 @@ const columns: ColumnDefinitionType<LinkDoc>[] = [
   {
     key: 'fullLink',
     header: 'Target',
-    render: link => <Link href={`/${link.shortLink}`}>
-      {link.fullLink.slice(0, 30)}...
+    render: link => <Link href={`/${link.shortLink}`} style={{
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        maxWidth: '50vw',
+        display: 'block',
+    }}>
+      {link.fullLink}
     </Link>
   },
   {
@@ -55,7 +61,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main style={{display: 'flex'}}>
         <Table data={data?.data ?? []} columns={columns} />
       </main>
     </>
