@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="310 520 460 120">
+	<title>New Project</title>
+	<style>
+		.s0 { fill: #000000 } 
+		.s1 { fill: #ffffff } 
+		.s2 { fill: #170c08 } 
+	</style>
+	<g id="n">
+		<g id="n">
+			<path id="Shape 7 copy" class="s0" d="m690 520l-60 120-60-120z"/>
+			<path id="Shape 7" class="s1" d="m670 520l-40 80-40-80z"/>
+		</g>
+		<path id="Shape 8" class="s1" d="m630 520h60v120h-60z"/>
+	</g>
+	<g id="t">
+		<path id="Shape 9" class="s2" d="m630 520h20v120h-20z"/>
+		<path id="Shape 10" class="s2" d="m650 520h120v20h-120z"/>
+		<path id="Shape 11" class="s2" d="m710 540h20v100h-20z"/>
+	</g>
+	<g id="v">
+		<path id="Shape 7 copy" class="s0" d="m570 520l-60 120-60-120z"/>
+		<path id="Shape 7" class="s1" d="m550 520l-40 80-40-80z"/>
+	</g>
+	<g id="d">
+		<path id="Shape 1" class="s0" d="m310 520h20v120h-20z"/>
+		<path id="Shape 2" class="s0" d="m310 520h60v20h-60z"/>
+		<path id="Shape 3" class="s0" d="m350 520h20v120h-20z"/>
+		<path id="Shape 6" class="s0" d="m370 640v-23l60-37-60-36v-24l100 60z"/>
+	</g>
+</svg>
