@@ -25,7 +25,7 @@ const columns: ColumnDefinitionType<LinkDoc>[] = [
     header: 'Target',
     render: link => 
       <Ellipsis maxWidth='50vh'>
-        <Link href={`/${link.shortLink}`}>
+        <Link href={link.fullLink}>
           {link.fullLink}
         </Link>
       </Ellipsis>
