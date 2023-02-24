@@ -1,3 +1,4 @@
+import Ellipsis from '@/components/ellipsis';
 import Table from '@/components/table/table';
 import { ColumnDefinitionType } from '@/components/table/types';
 import { LinkDoc } from '@/models/link';
@@ -21,15 +22,12 @@ const columns: ColumnDefinitionType<LinkDoc>[] = [
   {
     key: 'fullLink',
     header: 'Target',
-    render: link => <Link href={`/${link.shortLink}`} style={{
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        maxWidth: '50vw',
-        display: 'block',
-    }}>
-      {link.fullLink}
-    </Link>
+    render: link => 
+      <Ellipsis maxWidth='50vh'>
+        <Link href={`/${link.shortLink}`}>
+          {link.fullLink}
+        </Link>
+      </Ellipsis>
   },
   {
     key: 'shortLink',

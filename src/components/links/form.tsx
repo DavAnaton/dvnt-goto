@@ -2,6 +2,7 @@ import { ILink } from "@/models/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Ellipsis from "../ellipsis";
 
 
 interface LinkFormInterface{
@@ -48,7 +49,9 @@ export default function LinkForm({existingLink, shortLink}: LinkFormInterface) {
 		>
 			<h3>URL</h3>
 			{existingLink &&
-				<p>Current Value: {existingLink.fullLink}</p>
+				<div>
+					Current Value: <Ellipsis>{existingLink.fullLink}</Ellipsis>
+				</div>
 			}
 			<input {...register('fullLink')}/>
 			{/*<h3>Owners</h3>
