@@ -1,4 +1,6 @@
 :root {
+  --navbar-background: #111111;
+
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -8,6 +10,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --grayed-out-text: #555555;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -42,6 +45,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --navbar-background: #111111;
+
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;

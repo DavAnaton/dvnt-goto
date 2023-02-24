@@ -1,8 +1,11 @@
+@import './_variables.scss';
+
 .footer {
-	background-color: #111111;
+	background-color: $navbar-background;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 30px;
-	color: #333333;
+	padding: $navbar-padding;
+	height: $navbar-height;
+	color: var(--grayed-out-text);
 }
