@@ -1,5 +1,5 @@
 import { ILink } from "@/models/link";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Ellipsis from "../ellipsis";

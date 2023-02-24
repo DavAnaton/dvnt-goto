@@ -1,24 +1,35 @@
 import Image from "next/image";
 import styles from "./header.module.scss";
 import { useSession, signIn, signOut } from "next-auth/react"
+import Link from "next/link";
 
 export default function Header() {
   const { data: session } = useSession();
   return <div className={styles.header}>
-    <Image 
-      src="/dvnt.svg"
-      width={180}
-      height={40}
-      alt="DVNT logo"
-      style={{filter: "invert(1)", padding: '5px'}}
-    />
+    <Link href='/'>
+      <Image 
+        src="/dvnt.svg"
+        width={100}
+        height={30}
+        alt="DVNT logo"
+        className={styles.headerLogo}
+      />
+    </Link>
     {session ?
-      <button onClick={() => signOut()}>
-        {session.user?.email}
-      </button>:
+      <Image 
+        src={session.user?.image ?? ''}
+        width={30}
+        height={30}
+        alt="DVNT logo"
+        className={styles.userImage}
+      />:
       <button onClick={() => signIn()}>
         Sign in
       </button>
     }
   </div>;
 }
+
+// <button onClick={() => signOut()}>
+//   Sign out
+// </button>
