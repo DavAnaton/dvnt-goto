@@ -6,10 +6,11 @@ export default function Header() {
   const { data: session } = useSession();
   return <div className={styles.header}>
     <Image 
-      src="/next.svg"
+      src="/dvnt.svg"
       width={180}
-      height={50}
+      height={40}
       alt="DVNT logo"
+      style={{filter: "invert(1)", padding: '5px'}}
     />
     {session ?
       <button onClick={() => signOut()}>
