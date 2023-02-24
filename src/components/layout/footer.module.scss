@@ -5,7 +5,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: $navbar-padding;
+	padding: 0 $navbar-side-padding;
 	height: $navbar-height;
 	color: var(--grayed-out-text);
 }

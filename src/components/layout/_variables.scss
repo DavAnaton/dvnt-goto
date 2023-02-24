@@ -1,3 +1,8 @@
 $navbar-background: var(--navbar-background);
-$navbar-padding: 0 2em;
+$navbar-side-padding: 2em;
 $navbar-height: 3em;
+
+@mixin sidebar-width(){
+	min-width: 30vw;
+	max-width: 500px;
+}
