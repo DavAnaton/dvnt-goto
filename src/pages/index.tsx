@@ -1,3 +1,4 @@
+import CopyIcon from '@/components/copy-icon';
 import Ellipsis from '@/components/ellipsis';
 import Table from '@/components/table/table';
 import { ColumnDefinitionType } from '@/components/table/types';
@@ -17,7 +18,7 @@ const columns: ColumnDefinitionType<LinkDoc>[] = [
   {
     key: 'shortLink',
     header: 'Copy',
-    render: item => 'copy',
+    render: link => <CopyIcon text={`go/${link.shortLink}`}/>,
   },
   {
     key: 'fullLink',

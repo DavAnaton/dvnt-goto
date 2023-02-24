@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Ellipsis from "../ellipsis";
+import CopyIcon from "../copy-icon";
 
 
 interface LinkFormInterface{
@@ -51,6 +52,7 @@ export default function LinkForm({existingLink, shortLink}: LinkFormInterface) {
 			{existingLink &&
 				<div>
 					Current Value: <Ellipsis>{existingLink.fullLink}</Ellipsis>
+					<CopyIcon text={existingLink.fullLink}/>
 				</div>
 			}
 			<input {...register('fullLink')}/>
