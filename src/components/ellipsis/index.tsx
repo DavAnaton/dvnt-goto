@@ -15,7 +15,7 @@ export default function Ellipsis({children, maxWidth}:Params){
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
-        maxWidth: maxWidth ?? '100vh',
+        maxWidth: maxWidth ?? '200px',
         flex: '1',
         display: 'block',
 	}} title={getNodeText(children)}>
