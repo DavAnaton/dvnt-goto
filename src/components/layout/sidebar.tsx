@@ -1,9 +1,13 @@
+import Link from "next/link";
+import styles from "./sidebar.module.scss";
 
 export default function Sidebar() {
-  return <div>
-    <ul>
-      <li> Create new link </li>
-      <li> My links </li>
-    </ul>
-  </div>;
+  return <ul className={styles.sidebar}>
+    <li>
+      <Link href='/'>Create new link</Link>
+    </li>
+    <li>
+      <Link href='/'>My links</Link>
+    </li>
+  </ul>;
 }

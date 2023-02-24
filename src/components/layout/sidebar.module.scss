@@ -1,0 +1,20 @@
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0;
+	padding-right: 20px;
+	min-width: 30vw;
+	max-width: 500px;
+
+	li {
+		width: 100%;
+		padding: .8em .8em;
+		margin-right: .4em;
+		margin-bottom: .8em;
+		border-radius: 0 99em 99em 0;
+		background: var(--primary-glow);
+		&:hover {
+			background: var(--secondary-glow);
+		}
+	}
+}
