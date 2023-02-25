@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
-import {VisitDoc, VisitSchema} from './visit';
+import {IVisit, VisitSchema} from './visit';
 
 export interface ILink {
 	shortLink: string;
 	fullLink: string;
-	visits: VisitDoc[];
+	visits: IVisit[];
 };
 
 export type LinkDoc = mongoose.Document&ILink;

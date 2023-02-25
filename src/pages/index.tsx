@@ -45,7 +45,7 @@ const columns: ColumnDefinitionType<LinkDoc>[] = [
   {
     key: 'shortLink',
     header: 'Last Access',
-    render: link => link.visits[link.visits.length - 1].date,
+    render: link => link.visits[link.visits.length - 1]?.date ?? 'Never',
   },
 ];
 

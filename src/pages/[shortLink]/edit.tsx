@@ -1,11 +1,13 @@
 import LinksForm from "@/components/links/form";
 import dbConnect from "@/lib/dbConnect";
 import { LinkDb, LinkDoc } from "@/models/link";
-import { NextApiRequest } from "next";
 import Head from "next/head";
 import Table from '@/components/table/table';
+import { GetServerSidePropsContext } from 'next'
+import { IVisit, VisitDoc } from "@/models/visit";
+import { ColumnDefinitionType } from "@/components/table/types";
 
-export async function getServerSideProps(request: NextApiRequest) {
+export async function getServerSideProps(request: GetServerSidePropsContext) {
 	const { shortLink } = request.query;
 	await dbConnect();
 	const link = await LinkDb.findOne({ shortLink }).lean();
@@ -15,20 +17,15 @@ export async function getServerSideProps(request: NextApiRequest) {
 			permanent: false,
 		}
 	}
-	link._id = link._id.toString()
-	link.visits.map(x => {
-		x._id = x._id.toString();
-		x.date = x.date.toString();
-	});
 
 	return {
 		props: {
-			link,
+			link: JSON.parse(JSON.stringify(link)),
 		},
 	};
 }
 
-const usageColumns = [
+const usageColumns: ColumnDefinitionType<IVisit>[]  = [
   {
     key: 'date',
     header: 'Date',
