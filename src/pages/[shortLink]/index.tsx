@@ -1,14 +1,30 @@
 import dbConnect from "@/lib/dbConnect";
 import { LinkDb  } from "@/models/link";
-import { NextApiRequest } from "next";
+import { VisitDb  } from "@/models/visit";
+import type { NextApiRequest } from 'next'
+import { getServerSession } from "next-auth/next"
 import Link from "next/link";
 
-export async function getServerSideProps(request: NextApiRequest) {
-  const { shortLink } = request.query;
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+
+export async function getServerSideProps(ctx: NextApiRequest) {
+  const session = await getServerSession(ctx.req, ctx.res, authOptions);
+  if(!session){
+    return {};
+  }
+
+  const { shortLink } = ctx.query;
 
   await dbConnect();
   const link = await LinkDb.findOne({ shortLink });
   if (link) {
+    link.visits.push(await VisitDb.build({
+      link: shortLink,
+      user: session.user.email,
+      date: Date.now(),
+    }).save());
+    link.save();
+    
     return {
       redirect: {
         destination: link.fullLink,

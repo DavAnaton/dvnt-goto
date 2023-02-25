@@ -3,6 +3,7 @@ import dbConnect from "@/lib/dbConnect";
 import { LinkDb, LinkDoc } from "@/models/link";
 import { NextApiRequest } from "next";
 import Head from "next/head";
+import Table from '@/components/table/table';
 
 export async function getServerSideProps(request: NextApiRequest) {
 	const { shortLink } = request.query;
@@ -15,6 +16,10 @@ export async function getServerSideProps(request: NextApiRequest) {
 		}
 	}
 	link._id = link._id.toString()
+	link.visits.map(x => {
+		x._id = x._id.toString();
+		x.date = x.date.toString();
+	});
 
 	return {
 		props: {
@@ -23,6 +28,16 @@ export async function getServerSideProps(request: NextApiRequest) {
 	};
 }
 
+const usageColumns = [
+  {
+    key: 'date',
+    header: 'Date',
+  },
+  {
+    key: 'user',
+    header: 'User',
+  },
+];
 
 export default function EditLink({ link }: { link: LinkDoc }) {
 	return (
@@ -39,7 +54,7 @@ export default function EditLink({ link }: { link: LinkDoc }) {
 			Who did what | When | Description(value)
 			<hr/>
 			<h3>Metrics</h3>
-			Access by time, users, ...
+			<Table data={link.visits} columns={usageColumns}/>
 		</main>
 		</>
 		)

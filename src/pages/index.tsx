@@ -40,12 +40,12 @@ const columns: ColumnDefinitionType<LinkDoc>[] = [
   {
     key: 'shortLink',
     header: 'Views',
-    render: item => '0 views',
+    render: link =>  `${link.visits.length} views`,
   },
   {
     key: 'shortLink',
     header: 'Last Access',
-    render: item => 'Today',
+    render: link => link.visits[link.visits.length - 1].date,
   },
 ];
 
